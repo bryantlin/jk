@@ -1,0 +1,25 @@
+<RuleSet>
+<Rule>
+<Name>PMAC click event to GA test</Name>
+<Order>1</Order>
+<NoOptout>1</NoOptout>
+<Threshold>0</Threshold>
+<TrialPaid>NA</TrialPaid>
+<VID>NA</VID>
+<BeginDate>2001-01-01</BeginDate>
+<EndDate>2100-01-01</EndDate>
+<Period>NA</Period>
+<Country>NA</Country>
+<Option>1</Option>
+<Url>
+https://pmac_beta.trendmicro.com/test/data/active-messages/non-ec/iTIS_template10.html
+</Url>
+<Frequency>1</Frequency>
+<Include/>
+<Exclude/>
+<SeatNoRange>NA</SeatNoRange>
+<ServiceID>NA</ServiceID>
+<ServiceStatus>NA</ServiceStatus>
+<CID>NA</CID>
+</Rule>
+</RuleSet>
