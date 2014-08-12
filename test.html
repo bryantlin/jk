@@ -1,68 +1,117 @@
 <!DOCTYPE HTML>
-<!--TOAST_NOTIFICATION
-;This is a comment line
-[TOAST]
-TOAST_TITLE=t
-TOAST_CONTENT=test
-TOAST_ACTION=
-TOAST_URL=
-TOAST_IMG=
-TOAST_IMGID=3
---><html xmlns="http://www.w3.org/1999/xhtml">
-<head><base href="http://tw-wse-rnu01:8080/FakeAKAMAI/data/active-messages/non-ec/2014/7/STD_TB70/67aa6ece3c474117b75391fcde0b232e/7/"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>#PRODUCTNAME#</title><style> body { text-align: center; font-family: Arial; background-color: #FFF; width: 335px; overflow: hidden; } </style>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><base href="http://pmac.trendmicro.com/data/active-messages/non-ec/EN-US/US/BS2_MC30/ebae06accb4345048bfd2e3c0d311151/1/"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>#PRODUCTNAME#</title>
     <!-- Date: 2010-02-11 -->
-    <link rel="stylesheet" type="text/css" href="/data/common/TI60/css/reset.css" media="all">
-    <link rel="stylesheet" href="/data/common/TI60/css/utility_for_large.css" type="text/css" media="all" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="/data/common/TI60/css/skin_for_large.css" type="text/css" media="all" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="/data/common/TI60/css/pmac_for_large.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<script language="javascript" src="/data/common/jquery-1.4.1.min.js"></script>
-	<script language="javascript" src="/data/common/TI60/js/move.js"></script>
+    <link rel="stylesheet" type="text/css" href="/data/common/TI60/css/reset.css"
+        media="all" />
+    <link rel="stylesheet" href="/data/common/TI60/css/utility.css" type="text/css"
+        media="all" title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="/data/common/TI60/css/skin.css" type="text/css" media="all"
+        title="no title" charset="utf-8" />
+    <link rel="stylesheet" href="/data/common/TI60/css/pmac.css" type="text/css" media="all"
+        title="no title" charset="utf-8" />
+<link rel="stylesheet" href="/data/common/default/css/EN-US.css" type="text/css"  charset="utf-8">
+<script language="javascript" src="/data/common/jquery-1.4.1.min.js"></script><script type="text/javascript">
+	 var page_url = "http://pmac.trendmicro.com/data/active-messages/non-ec/EN-US/US/BS2_MC30/ebae06accb4345048bfd2e3c0d311151/1/template.html";
+	 var isIE = navigator.userAgent.indexOf('MSIE') !=-1;
+	 var token = "#SN#";
+	 var isPopup = token.indexOf('#') == -1;
+	 var gaFrame = document.getElementById('gaFrame');
+	 var action = getQuerystring('action');
+	 var store = getQuerystring('store');
+	 var er_url = "https://gr.trendmicro.com/GREntry/EnsureRedirection?SN=#SN#&GUID=#GUID#&VID=#VID#&SRC=D&RedirectionURL=";
+	 var close_function = window.close;
+	 if(! isPopup){
+		var _gaq = _gaq || []; 
+		_gaq.push(['_setAccount', 'UA-10576380-3'],['_setCustomVar',1,'Scope','Global Default',3],['_setCustomVar',2,'Name','GD_D_expired_(-7)_(-1)_1_banner_r',3]
+					,['_setCustomVar',3,'PID','BS2_MC30',3],['_setCustomVar',4,'Locale','EN-US',3],['_setCustomVar',5,'Country','US',3]);
+		if(action == "view") _gaq.push(['_trackPageview', '/data/active-messages/non-ec/EN-US/US/BS2_MC30/ebae06accb4345048bfd2e3c0d311151/1/template.html']); 
+		else if(action == "buy") _gaq.push(['_trackEvent', 'EN-US/US/BS2_MC30/ebae06accb4345048bfd2e3c0d311151/1', decodeURIComponent(store), 'GD_D_expired_(-7)_(-1)_1_banner_r']);
+		
+		if(action == "buy" || action == "view"){
+			var ga_src = ('https:'   == document.location.protocol ? 'https://ssl'   : 'http://www') + '.google-analytics.com/ga.js'; 
+			$.getScript(ga_src , function() { if(isIE){ window.opener=null; window.close();}});
+		}
+	}
+	 $(document).ready(function(){
+		if(isPopup){	
+			$("[name='btnOpnBSClsIM']").bind("click", buyClick);
+			$("[name='btnOpnMiniURLClsIM']").bind("click", buyClick);
+			$("#btnUpgradeClsMini").bind("click",upgradeClick);
+			if(isIE) openWindow("view");
+			else setGaFrame("view");
+		}
+	 });
+function buyClick(){
+	var url = $(this).attr("url");
+	if(url.indexOf(er_url) != -1)url = url.replace(er_url,"");
+	else url = encodeURIComponent(url);
+	if(isIE) openWindow("buy", url);
+	else{
+		window.close = function(){};
+		$("#gaFrame").bind("load", function(){ window.close = close_function; close_function.call(window); } );
+		setGaFrame("buy", url);
+	}
+}	
+function upgradeClick(){
+	window.close = function(){};
+	$("#gaFrame").bind("load", function(){ window.close = close_function; close_function.call(window); } );
+	setGaFrame("buy", "easyupgrade");
+}	
+ 
+function openWindow(act,url){return window.open(url?page_url+"?action="+act+"&store="+url:page_url+"?action="+act , 'PMACGAWindow', 'height=100, width=100, top=99999, left=99999, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');}
+function setGaFrame(act,url){gaFrame = document.getElementById('gaFrame'); gaFrame.src=url?page_url+"?action="+act+"&store="+url:page_url+"?action="+act;}
+function getQuerystring(key, default_){
+  if (default_==null) default_=""; key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regex = new RegExp("[\\?&]"+key+"=([^&#]*)"); var qs = regex.exec(window.location.href);
+  if(qs == null) return default_; else return qs[1];
+}
+</script>
 </head>
-<body class="indicator"><div class="pmac_wrapper small_pmac">
+<body class="indicator">
+    <div class="pmac_wrapper small_pmac">
         <div>
             <!-- begin : frame -->
             <!-- end : frame -->
-            <!-- begin : contents -->
-            <div id="contents" class="content">
+            <!-- begin : contents --><div id="contents" class="content">
+                <a href="javascript:void(0);" class="close" id="btnClsIM" name="btnClsIM">X</a>
                 <div class="popup_status risk AMSP_UI_CLASS_DRAGABLE">
                     error</div>
-                <div class="ContentHeader __PMAC_ContentHeader">
+                <div class="ContentHeader">
                     <h1>
-                        <div class="editable AMSP_UI_CLASS_DRAGABLE">
-                            Your Security Software Has Expierd</div>
+                        <div class="editable AMSP_UI_CLASS_DRAGABLE" contenteditable="false">
+                            Your Security Software Has EXPIRED</div>
                     </h1>
                 </div>
-                <div class="message __PMAC_Message">
-                    <div class="editable">
-                        Titanium Maximum Security no longer protects your computer.<br>
-						Don't leave yourself at risk.
-                    </div>
+                <div class="message">
+                    <div class="editable" contenteditable="false">
+                        Your subscription to #PRODUCTNAME# and the Best Buy Protection Plan has expired.&nbsp;</div>
                 </div>
                 <div class="footer">
+                    <div class="promotion">
+                        <div class="editable" contenteditable="false">Act now!<br></div>
+                    </div>
                     <div class="btn_area">
-                        <div class="buttons" _title="1btn/Open Browser">
+                        <div class="buttons" _title="1btn/Open Browser" style="display: block;">
                             <button class="window_button">
-                                <span class="editable __PMAC_btnOpnBSClsIM" id="btnOpnBSClsIM" name="btnOpnBSClsIM" url="http://10.1.100.35:8080/GREntry/EnsureRedirection?SN=#SN#&GUID=#GUID#&VID=#VID#&SRC=D&RedirectionURL=test123&SourceKey=15367">Get Protection Now!</span>
-							</button>
+                                <span class="editable" id="btnOpnBSClsIM" name="btnOpnBSClsIM" url="https://gr.trendmicro.com/GREntry/EnsureRedirection?SN=#SN#&GUID=#GUID#&VID=#VID#&SRC=D&RedirectionURL=%23RENEWURL%23" contenteditable="false">Activate Product Now</span></button>
                         </div>
-                        <div class="buttons" _title="1btn/Close Window" style="display: none">
+                        <div class="buttons" _title="1btn/Close Window" style="display: none;">
                             <button class="window_button">
-                                <span class="editable __PMAC_btnClsIM" id="btnClsIM" name="btnClsIM">Close</span>
+                                <span class="editable" id="btnClsIM" name="btnClsIM" contenteditable="false">Close</span>
                             </button>
                         </div>
-						<div class="banner_area">
-							<img class="banner" src="/data/common/TI60/img/pmac/expire.png" alt="" border="0">
-						</div>
+                    </div>
+                    <div class="extra_option">
                     </div>
                 </div>
-            </div>
-            <!-- end : contents -->
+            </div><!-- end : contents -->
         </div>
         <div class="header">
             #PRODUCTNAME#
-			<a href="javascript:void(0);" class="close" id="btnClsIM" name="btnClsIM">Close</a>
         </div>
-    </div><iframe id="gaFrame"  width="0" height="0" scrolling="no" frameborder="0" style="display:none"></iframe></body>
+    </div>
+<iframe id="gaFrame"  width="0" height="0" scrolling="no" frameborder="0" style="display:none"></iframe></body>
 </html>
